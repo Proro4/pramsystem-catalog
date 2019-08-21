@@ -1,22 +1,30 @@
 <template>
-    <div class="auth__form">
-            <div class="auth__form-top">
-                <div class="auth__form-title display-1">Увійти</div>
-                <span class="auth__form-title title">Вхід для адміністраторів </span>
-                <span class="auth__span">Введіть ваш номер телефону</span>
-                <div>
-                    <v-btn
-                           color="orange"
-                           dark
-                           min-width="260"
-                           rounded=""
-                           class="auth__butt"
-                           elevation="0"
-                    >
-                        Далі
-                    </v-btn>
-                </div>
+    <div class="auth">
+        <div class="auth__form">
+            <div class="title">
+                Login
             </div>
+
+            <v-col cols="10">
+                <v-text-field
+                        dark
+                        type="text"
+                        label="Name"
+                        v-model="auth.name"
+                ></v-text-field>
+            </v-col>
+            <v-col cols="10">
+                <v-text-field
+                        dark
+                        type="password"
+                        label="Password"
+                        v-model="auth.password"
+                ></v-text-field>
+            </v-col>
+            <v-col cols="12">
+              <v-btn @click="loginUser()">Log in</v-btn>
+            </v-col>
+        </div>
     </div>
 </template>
 <script src="./index.js"></script>

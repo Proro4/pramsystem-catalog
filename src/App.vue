@@ -1,22 +1,21 @@
 <template>
   <v-app>
-
-    <v-content>
-        <router-view></router-view>
-    </v-content>
+      <div class="header">
+          <router-link :to="{name:'auth'}">auth</router-link>
+      </div>
+      <router-view></router-view>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld,
-  },
-  data: () => ({
-    //
-  }),
+  data(){
+      return{
+
+      }
+  }
 };
 </script>
+<style src="./assets/style/style.scss" lang="scss"></style>
