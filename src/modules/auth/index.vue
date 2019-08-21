@@ -22,7 +22,12 @@
                 ></v-text-field>
             </v-col>
             <v-col cols="12">
-              <v-btn @click="loginUser()">Log in</v-btn>
+                <v-btn
+                        @click="loginUser()"
+                        elevation="0"
+                        rounded=""
+                >Log in
+                </v-btn>
             </v-col>
         </div>
     </div>

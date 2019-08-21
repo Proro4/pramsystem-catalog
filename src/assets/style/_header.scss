@@ -1,0 +1,13 @@
+.header{
+  height: 50px;
+  position: relative;
+  z-index: 100;
+  background: #252525;
+  display: flex;
+  padding:0 25px;
+  justify-content: flex-end;
+  align-items: center;
+  &__btn{
+  }
+
+}

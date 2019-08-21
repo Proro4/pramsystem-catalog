@@ -1,5 +1,6 @@
 import {
-    AUTH_USER
+    AUTH_USER,
+    LOGOUT
 } from '../mutation-types';
 
 const state = {
@@ -18,11 +19,18 @@ const getters ={
 const mutations ={
     [AUTH_USER](state, status){
         state.authUser = status;
-        if(state.authUser.name == 'admin' && state.authUser.password == '12345678'){
-            state.isAuthentificated = true;
+        if(state.authUser.name == 'admin' && state.authUser.password == '1234'){
+             state.isAuthentificated = true;
+             state.authErrorMessage = 'Веден правильный логин и пароль';
+             localStorage.setItem('auth', 'true');
         }else{
-            state.authErrorMessage = 'Веден неправильный логин или пароль.'
+             state.authErrorMessage = 'Веден неправильный логин или пароль.'
         }
+    },
+    [LOGOUT](state){
+        localStorage.removeItem('auth');
+        state.isAuthentificated = false;
+
     }
 };
 

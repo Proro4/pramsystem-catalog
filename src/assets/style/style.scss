@@ -1,1 +1,9 @@
 @import "auth";
+@import "header";
+@import "catalog";
+
+.dark{
+  padding: 15px;
+  background: #424242;
+  color: white;
+}
