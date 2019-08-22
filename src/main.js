@@ -7,10 +7,14 @@ import router from './router'
 import vuetify from './plugins/vuetify'
 import Toaster from 'v-toaster';
 import 'v-toaster/dist/v-toaster.css';
+import VueLodash from 'vue-lodash'
+
+const options = { name: 'lodash' };
 
 Vue.use(Vuex);
 Vue.use(Vuex,axios);
 Vue.use(Toaster, {timeout: 5000});
+Vue.use(VueLodash, options);
 
 Vue.config.productionTip = false
 

@@ -1,0 +1,39 @@
+.loader{
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.5);
+  &__block{
+    height:75px;
+    width: 75px;
+    border: 1px solid white;
+    border-radius: 50px;
+    animation: loader 1s infinite;
+    transform: rotate(45deg);
+    box-shadow: 0 0 10px rgba(255,255,255,0.5);
+  }
+}
+@keyframes loader {
+  0%{
+    transform: rotate(45deg);
+    border-radius: 0px;
+  }
+  15%{
+    border-radius: 0px;
+  }
+  50%{
+    border-radius: 50px;
+  }
+  85%{
+    border-radius: 0px;
+  }
+  100%{
+    transform: rotate(135deg);
+    border-radius: 0px;
+  }
+}

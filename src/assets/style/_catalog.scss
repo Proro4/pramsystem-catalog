@@ -1,10 +1,16 @@
 .catalog{
+  background: #424242 !important;
   &__filtres{
     background: #424242;
   }
   &__tr{
       td{
         border-bottom: 1px solid #7b7b7b;
+        img{
+          max-width: 75px;
+          max-height: 75px;
+          border-radius: 5px;
+        }
       }
     }
 }
