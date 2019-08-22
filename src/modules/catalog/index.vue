@@ -1,6 +1,6 @@
 <template>
     <v-app class="catalog">
-        <div class="catalog__filtres">
+        <div class="catalog__filtres" :class="{showFilter}">
             <v-container fluid>
                 <v-row>
                     <v-col cols="2">
@@ -110,47 +110,67 @@
                 </v-row>
             </v-container>
         </div>
-        <div class="title dark">Products Catalog</div>
-        <div v-if="catalogList">
-            <v-simple-table
-                dark
-            >
-                <tr>
-                    <th>
-                        Prefix
-                    </th>
-                    <th>Image</th>
-                    <th>Vendor Sku</th>
-                    <th>UPC</th>
-                    <th>Cost</th>
-                    <th>UOM sale</th>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Model Number</th>
-                    <th>Brand</th>
-                    <th>Min Pack</th>
-                    <th>On Hand</th>
-                </tr>
-                <tr v-for="(item, index) in catalogList"
-                    :key="index"
-                    class="catalog__tr">
-                    <td>{{item.prefix}}</td>
-                    <td><img :src="item.image" alt=""></td>
-                    <td>{{item.vendor_sku}}</td>
-                    <td>{{item.upc}}</td>
-                    <td>{{item.cost}}</td>
-                    <td>{{item.uom_sale}}</td>
-                    <td>{{item.title}}</td>
-                    <td>{{item.description}}</td>
-                    <td>{{item.model_number}}</td>
-                    <td>{{item.brand}}</td>
-                    <td>{{item.min_pack}}</td>
-                    <td>{{item.on_hand}}</td>
-                </tr>
-            </v-simple-table>
-        </div>
-        <div v-else>
-          <loader></loader>
+        <div class="catalog__list"  :class="{showFilter}">
+            <div class="title dark">Products Catalog</div>
+            <div v-if="catalogList">
+                <v-simple-table
+                    dark
+                >
+                    <tr>
+                        <th class="catalog__sort" @click="sort('prefix')">
+                            <label>
+                                <input type="radio" name="sort">
+                                <span>Prefix</span>
+                            </label>
+                        </th>
+                        <th>Image</th>
+                        <th class="catalog__sort" @click="sort('prefix')">
+                            <label>
+                                <input type="radio" name="sort">
+                                <span>Vendor Sku</span>
+                            </label>
+                        </th>
+                        <th>UPC</th>
+                        <th class="catalog__sort" @click="sort('cost')">
+                            <label>
+                                <input type="radio" name="sort">
+                                <span>Cost</span>
+                            </label>
+                        </th>
+                        <th>UOM sale</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Model Number</th>
+                        <th>Brand</th>
+                        <th>Min Pack</th>
+                        <th class="catalog__sort" @click="sort('on_hard')">
+                            <label>
+                                <input type="radio" name="sort">
+                                <span>On Hand</span>
+                            </label>
+                        </th>
+                    </tr>
+                    <tr v-for="(item, index) in catalogList"
+                        :key="index"
+                        class="catalog__tr">
+                        <td>{{item.prefix}}</td>
+                        <td><img :src="item.image" alt=""></td>
+                        <td><router-link :to="{name:'productDetail', params: {id: item.id}}">{{item.vendor_sku}}</router-link></td>
+                        <td>{{item.upc}}</td>
+                        <td>{{item.cost}}</td>
+                        <td>{{item.uom_sale}}</td>
+                        <td>{{item.title}}</td>
+                        <td>{{item.description}}</td>
+                        <td>{{item.model_number}}</td>
+                        <td>{{item.brand}}</td>
+                        <td>{{item.min_pack}}</td>
+                        <td>{{item.on_hand}}</td>
+                    </tr>
+                </v-simple-table>
+            </div>
+            <div v-show="catalogPreloader">
+                <loader></loader>
+            </div>
         </div>
     </v-app>
 </template>

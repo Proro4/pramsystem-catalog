@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import Store from './store';
 import auth from './modules/auth/index.vue'
 import catalog from './modules/catalog/index.vue'
+import productDetail from './modules/catalog/components/product-detail/index.vue'
 
 Vue.use(Router);
 
@@ -32,6 +33,12 @@ export default new Router({
             path: '/catalog/',
             name: 'catalog',
             component: catalog,
+            beforeEnter: ifAuthenticated,
+        },
+        {
+            path: '/catalog/:id',
+            name: 'productDetail',
+            component: productDetail,
             beforeEnter: ifAuthenticated,
         }
     ]

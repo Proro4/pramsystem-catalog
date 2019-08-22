@@ -1,16 +1,19 @@
 import {mapMutations, mapGetters} from 'vuex'
 import {
-    LOGOUT
+    LOGOUT,
+    SWITCH_FILTER_SHOWS
 } from '../../store/mutation-types.js'
 export default {
     computed:{
         ...mapGetters({
             isAuthentificated: 'auth/isAuthentificated',
+            showFilter: 'catalog/switchFilterShows',
         }),
     },
     methods:{
         ...mapMutations({
-            logout: `auth/${LOGOUT}`
+            logout: `auth/${LOGOUT}`,
+            filterOpen:`catalog/${SWITCH_FILTER_SHOWS}`
         }),
         logoutUser(){
             this.logout();

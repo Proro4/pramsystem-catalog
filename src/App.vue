@@ -15,7 +15,7 @@
             }
         },
         components:{
-            headers
+            headers,
         }
     };
 </script>

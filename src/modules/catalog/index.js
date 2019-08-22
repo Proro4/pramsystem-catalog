@@ -32,6 +32,8 @@ export default {
         ...mapGetters({
             catalogList: 'catalog/catalogList',
             catalogVendors: 'catalog/catalogVendors',
+            catalogPreloader: 'catalog/catalogPreloader',
+            showFilter: 'catalog/switchFilterShows',
         })
     },
     created() {
@@ -45,8 +47,11 @@ export default {
             fetchCatalogVendors: `catalog/${CATALOG_VENDORDS}`,
         }),
         filterChange: _.debounce(function () {
-            console.log(this.filterOptions)
             this.fetchCatalogList(this.filterOptions);
-        }, 500)
+        }, 500),
+        sort(item){
+            this.filterOptions.sort = item;
+            this.filterChange();
+        }
     }
 }
