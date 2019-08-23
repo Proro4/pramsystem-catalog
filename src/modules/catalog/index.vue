@@ -3,7 +3,7 @@
         <div class="catalog__filtres" :class="{showFilter}">
             <v-container fluid>
                 <v-row>
-                    <v-col cols="2">
+                    <v-col class="catalog__filters-item" lg="2" md="3" sm="4" cols="6" >
                         <v-text-field
                                 dark
                                 type="text"
@@ -12,7 +12,7 @@
                                 @input="filterChange()"
                         ></v-text-field>
                     </v-col>
-                    <v-col cols="2">
+                    <v-col class="catalog__filters-item" lg="2" md="3" sm="4" cols="6" >
                         <v-text-field
                                 dark
                                 type="text"
@@ -21,7 +21,7 @@
                                 @input="filterChange()"
                         ></v-text-field>
                     </v-col>
-                    <v-col cols="2">
+                    <v-col class="catalog__filters-item" lg="2" md="3" sm="4" cols="6" >
                         <v-text-field
                                 dark
                                 type="text"
@@ -30,7 +30,7 @@
                                 @input="filterChange()"
                         ></v-text-field>
                     </v-col>
-                    <v-col cols="2">
+                    <v-col class="catalog__filters-item" lg="2" md="3" sm="4" cols="6" >
                         <v-text-field
                                 dark
                                 type="text"
@@ -39,7 +39,7 @@
                                 @input="filterChange()"
                         ></v-text-field>
                     </v-col>
-                    <v-col cols="2">
+                    <v-col class="catalog__filters-item" lg="2" md="3" sm="4" cols="6" >
                         <v-text-field
                                 dark
                                 type="text"
@@ -48,7 +48,7 @@
                                 @input="filterChange()"
                         ></v-text-field>
                     </v-col>
-                    <v-col cols="2">
+                    <v-col class="catalog__filters-item" lg="2" md="3" sm="4" cols="6" >
                         <v-select
                                 dark
                                 :items="catalogVendors"
@@ -57,7 +57,7 @@
                                 @change="filterChange()"
                         ></v-select>
                     </v-col>
-                    <v-col cols="2">
+                    <v-col class="catalog__filters-item" lg="2" md="3" sm="4" cols="6" >
                         <v-text-field
                                 dark
                                 type="text"
@@ -66,7 +66,7 @@
                                 @input="filterChange()"
                         ></v-text-field>
                     </v-col>
-                    <v-col cols="2">
+                    <v-col class="catalog__filters-item" lg="2" md="3" sm="4" cols="6" >
                         <v-text-field
                                 dark
                                 type="text"
@@ -75,7 +75,7 @@
                                 @input="filterChange()"
                         ></v-text-field>
                     </v-col>
-                    <v-col cols="2">
+                    <v-col class="catalog__filters-item" lg="2" md="3" sm="4" cols="6" >
                         <v-text-field
                                 dark
                                 type="text"
@@ -84,7 +84,7 @@
                                 @input="filterChange()"
                         ></v-text-field>
                     </v-col>
-                    <v-col cols="2">
+                    <v-col class="catalog__filters-item" lg="2" md="3" sm="4" cols="6" >
                         <v-text-field
                                 dark
                                 type="text"
@@ -93,14 +93,14 @@
                                 @input="filterChange()"
                         ></v-text-field>
                     </v-col>
-                    <v-col cols="2">
+                    <v-col class="catalog__filters-item" lg="2" md="3" sm="4" cols="6" >
                         <v-text-field
                                 dark
                                 type="text"
                                 label="Added date from"
                         ></v-text-field>
                     </v-col>
-                    <v-col cols="2">
+                    <v-col class="catalog__filters-item" lg="2" md="3" sm="4" cols="6" >
                         <v-text-field
                                 dark
                                 type="text"
@@ -117,13 +117,13 @@
                     dark
                 >
                     <tr>
-                        <th class="catalog__sort" @click="sort('prefix')">
+                        <th class="catalog__sort mob-off" @click="sort('prefix')">
                             <label>
                                 <input type="radio" name="sort">
                                 <span>Prefix</span>
                             </label>
                         </th>
-                        <th>Image</th>
+                        <th class="mob-off">Image</th>
                         <th class="catalog__sort" @click="sort('prefix')">
                             <label>
                                 <input type="radio" name="sort">
@@ -142,8 +142,8 @@
                         <th>Description</th>
                         <th>Model Number</th>
                         <th>Brand</th>
-                        <th>Min Pack</th>
-                        <th class="catalog__sort" @click="sort('on_hard')">
+                        <th class="mob-off">Min Pack</th>
+                        <th class="catalog__sort mob-off" @click="sort('on_hard')">
                             <label>
                                 <input type="radio" name="sort">
                                 <span>On Hand</span>
@@ -153,9 +153,9 @@
                     <tr v-for="(item, index) in catalogList"
                         :key="index"
                         class="catalog__tr">
-                        <td>{{item.prefix}}</td>
-                        <td><img :src="item.image" alt=""></td>
-                        <td><router-link :to="{name:'productDetail', params: {id: item.id}}">{{item.vendor_sku}}</router-link></td>
+                        <td class="mob-off">{{item.prefix}}</td>
+                        <td class="mob-off"><img :src="item.image" alt=""></td>
+                        <td><router-link target="_blank" :to="{name:'productDetail', params: {id: item.id}}">{{item.vendor_sku}}</router-link></td>
                         <td>{{item.upc}}</td>
                         <td>{{item.cost}}</td>
                         <td>{{item.uom_sale}}</td>
@@ -163,8 +163,8 @@
                         <td>{{item.description}}</td>
                         <td>{{item.model_number}}</td>
                         <td>{{item.brand}}</td>
-                        <td>{{item.min_pack}}</td>
-                        <td>{{item.on_hand}}</td>
+                        <td class="mob-off">{{item.min_pack}}</td>
+                        <td class="mob-off">{{item.on_hand}}</td>
                     </tr>
                 </v-simple-table>
             </div>
