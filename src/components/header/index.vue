@@ -1,7 +1,7 @@
 <template>
     <div class="header">
         <div class="header__right" v-if="isAuthentificated">
-            <div class="filter-btn" @click="filterOpen(!showFilter)"  :class="{showFilter}">
+            <div class="filter-btn" v-if="catalogPage" @click="filterOpen(!showFilter)"  :class="{showFilter}">
                 Filter
                 <span></span>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30">

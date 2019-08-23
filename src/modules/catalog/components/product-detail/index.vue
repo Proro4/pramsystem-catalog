@@ -14,7 +14,7 @@
 
                     </v-card>
                 </v-col>
-                <v-col lg="2" md="6" sm="12" cols="12" >
+                <v-col lg="2" md="6" sm="6" cols="12" >
                     <v-card  dark>
                         <v-list-item>
                             <v-list-item-content>
@@ -60,7 +60,7 @@
                         </v-list-item>
                     </v-card>
                 </v-col>
-                <v-col lg="2" md="6" sm="12" cols="12" >
+                <v-col lg="2" md="6" sm="6" cols="12" >
                     <v-card  dark>
                         <v-list-item >
                             <v-list-item-content>
@@ -106,7 +106,7 @@
                         </v-list-item>
                     </v-card>
                 </v-col>
-                <v-col lg="2" md="6" sm="12" cols="12" >
+                <v-col lg="2" md="6" sm="6" cols="12" >
                     <v-card  dark>
                         <v-list-item>
                             <v-list-item-content>
@@ -146,7 +146,7 @@
                         </v-list-item>
                     </v-card>
                 </v-col>
-                <v-col lg="2" md="6" sm="12" cols="12" >
+                <v-col lg="2" md="6" sm="6" cols="12" >
                     <v-card  dark>
                         <v-list-item>
                             <v-list-item-content>

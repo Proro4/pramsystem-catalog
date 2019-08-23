@@ -8,6 +8,7 @@ export default {
         ...mapGetters({
             isAuthentificated: 'auth/isAuthentificated',
             showFilter: 'catalog/switchFilterShows',
+            catalogPage: 'system/catalogPage',
         }),
     },
     methods:{

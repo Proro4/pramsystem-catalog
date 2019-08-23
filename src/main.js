@@ -8,6 +8,7 @@ import vuetify from './plugins/vuetify'
 import Toaster from 'v-toaster';
 import 'v-toaster/dist/v-toaster.css';
 import VueLodash from 'vue-lodash'
+import 'vue-awesome/icons/flag'
 
 const options = { name: 'lodash' };
 

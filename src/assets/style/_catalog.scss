@@ -12,6 +12,7 @@
   &__filters-item{
     padding-top: 5px !important;
     padding-bottom: 5px !important;
+    position: relative;
   }
   &__sort{
     position: relative;
@@ -47,10 +48,34 @@
   &__list{
     position: relative;
     transition: 0.3s transform;
-    transform: translate3d(0,-150px,0);
+    transform: translate3d(0,-175px,0);
     &.showFilter{
       transform: translate3d(0,0%,0);
     }
+  }
+  &__list-top{
+    display: flex;
+    justify-content: space-between;
+  }
+  &__n-col{
+    margin-right: 15px;
+    max-width: 100px;
+  }
+  &__filters-date{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: transparent;
+    &:focus{
+      outline: none;
+    }
+  }
+  &__filters-input{
+    position: relative;
+    z-index: 1;
+    pointer-events: none;
   }
 }
 @import "media";

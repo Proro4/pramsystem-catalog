@@ -8,6 +8,7 @@ import {
 
 const state = {
     catalogList: null,
+    catalogListLength: null,
     catalogVendorsList: null,
     catalogVendors: [],
     catalogPreloader: false,
@@ -16,6 +17,7 @@ const state = {
 
 const getters = {
     catalogList: state => state.catalogList,
+    catalogListLength: state => state.catalogListLength,
     catalogVendorsList: state => state.catalogVendorsList,
     catalogVendors: state => state.catalogVendors,
     catalogPreloader: state => state.catalogPreloader,
@@ -26,8 +28,8 @@ const actions = {
     [CATALOG_LIST]: async ({commit}, payload) => {
         commit(CATALOG_PRELOAD, true);
         try {
-            let result = await axios.get('https://beta.pramsystem.com/api/half-price/products-catalog?title=' + payload.title + '&description=' + payload.description + '&model_number=' + payload.modelNumber + '&vendor_sku=' + '' + '&brand=' + payload.brand + '&upc=' + payload.upc + '&vendor=' + payload.vendor + '&cost_from=' + payload.costFrom + '&cost_to=' + payload.costTo + '&on_hand_from=' + payload.onHandFrom + '&on_hand_to=' + payload.onHandTo + '&created_at_from=' + '' + '&created_at_to=' + '' + '&sort=' + payload.sort + '&direction=' + '' + 'desc&n=' + '' + '');
-            commit(CATALOG_LIST, result.data.data)
+            let result = await axios.get('https://beta.pramsystem.com/api/half-price/products-catalog?title=' + payload.title + '&description=' + payload.description + '&model_number=' + payload.modelNumber + '&vendor_sku=' + '' + '&brand=' + payload.brand + '&upc=' + payload.upc + '&vendor=' + payload.vendor + '&cost_from=' + payload.costFrom + '&cost_to=' + payload.costTo + '&on_hand_from=' + payload.onHandFrom + '&on_hand_to=' + payload.onHandTo + '&created_at_from=' + payload.dateFrom + '&created_at_to=' + payload.dateTo + '&sort=' + payload.sort + '&direction=' + '' + 'desc&n=' + payload.n + '&page='+payload.page);
+            commit(CATALOG_LIST, result.data)
         } catch (e) {
             throw e;
         } finally {
@@ -46,7 +48,8 @@ const actions = {
 
 const mutations = {
     [CATALOG_LIST](state, status) {
-        state.catalogList = status;
+        state.catalogList = status.data;
+        state.catalogListLength = status.total;
     },
     [CATALOG_VENDORDS](state, status) {
         let key;

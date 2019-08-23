@@ -1,14 +1,14 @@
 @media screen and (max-width: 1260px){
   .catalog{
     &__list{
-      transform: translate3d(0,-220px,0);
+      transform: translate3d(0,-245px,0);
     }
   }
 }
 @media screen and (max-width: 960px){
   .catalog{
     &__list{
-      transform: translate3d(0,-310px,0);
+      transform: translate3d(0,-335px,0);
     }
   }
   .mob-off{
@@ -21,7 +21,7 @@
 @media screen and (max-width: 600px){
   .catalog{
     &__list{
-      transform: translate3d(0,-470px,0);
+      transform: translate3d(0,-495px,0);
     }
   }
   .v-data-table td{

@@ -1,14 +1,22 @@
-import {mapActions, mapGetters} from 'vuex';
+import {mapActions, mapGetters, mapMutations} from 'vuex';
 import loader from '../../components/loader/index.vue'
 import _ from 'lodash';
+import VueAdsPagination from 'vue-ads-pagination';
+import { VueAdsPageButton } from 'vue-ads-pagination';
+import flatPickr from 'vue-flatpickr-component';
+import 'flatpickr/dist/flatpickr.css';
 import {
-    CATALOG_LIST
+    CATALOG_LIST,
+    CATALOG_VENDORDS,
+    CATALOG_PAGE
 } from '../../store/mutation-types.js'
-import {CATALOG_VENDORDS} from "../../store/mutation-types";
 
 export default {
     data() {
         return {
+            page: 0,
+            start: 0,
+            end: 0,
             filterOptions: {
                 title: '',
                 description: '',
@@ -20,13 +28,21 @@ export default {
                 costTo: '',
                 onHandFrom: '',
                 onHandTo: '',
-                sort:''
+                dateFrom:'',
+                dateTo:'',
+                sort:'',
+                n:50,
+                page:1,
             },
-            items: ['Foo', 'Bar', 'Fizz', 'Buzz'],
+            product_numbs:[10,20,50,100],
+            date: null
         }
     },
     components: {
-        loader
+        loader,
+        VueAdsPagination,
+        VueAdsPageButton,
+        flatPickr
     },
     computed: {
         ...mapGetters({
@@ -34,17 +50,21 @@ export default {
             catalogVendors: 'catalog/catalogVendors',
             catalogPreloader: 'catalog/catalogPreloader',
             showFilter: 'catalog/switchFilterShows',
+            catalogListLength: 'catalog/catalogListLength',
         })
     },
     created() {
+        this.catalogPage(true);
         this.fetchCatalogList(this.filterOptions);
         this.fetchCatalogVendors();
     },
     methods: {
-
         ...mapActions({
             fetchCatalogList: `catalog/${CATALOG_LIST}`,
             fetchCatalogVendors: `catalog/${CATALOG_VENDORDS}`,
+        }),
+        ...mapMutations({
+            catalogPage: `system/${CATALOG_PAGE}`,
         }),
         filterChange: _.debounce(function () {
             this.fetchCatalogList(this.filterOptions);
@@ -52,6 +72,13 @@ export default {
         sort(item){
             this.filterOptions.sort = item;
             this.filterChange();
-        }
+        },
+        rangeChange () {
+            this.filterOptions.page = this.page +1;
+            this.fetchCatalogList(this.filterOptions);
+        },
+    },
+    destroyed(){
+        this.catalogPage(false);
     }
 }

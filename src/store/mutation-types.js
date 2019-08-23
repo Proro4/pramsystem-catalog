@@ -9,3 +9,5 @@ export const CATALOG_PRELOAD = 'CATALOG_PRELOAD';
 export const SWITCH_FILTER_SHOWS = 'SWITCH_FILTER_SHOWS';
 //product
 export const PRODUCT_DETAIL = 'PRODUCT_DETAIL';
+//system
+export const CATALOG_PAGE = 'CATALOG_PAGE';

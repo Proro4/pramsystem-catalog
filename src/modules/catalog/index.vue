@@ -95,23 +95,51 @@
                     </v-col>
                     <v-col class="catalog__filters-item" lg="2" md="3" sm="4" cols="6" >
                         <v-text-field
+                                class="catalog__filters-input"
                                 dark
                                 type="text"
-                                label="Added date from"
                         ></v-text-field>
+
+                        <flat-pickr
+                                placeholder="Added date from"
+                                class="catalog__filters-date dark"
+                                v-model="filterOptions.dateFrom"
+                                label="Added date from"
+                                @input="filterChange()"
+                        ></flat-pickr>
                     </v-col>
                     <v-col class="catalog__filters-item" lg="2" md="3" sm="4" cols="6" >
                         <v-text-field
+                                class="catalog__filters-input"
                                 dark
                                 type="text"
-                                label="Added date to"
                         ></v-text-field>
+
+                        <flat-pickr
+                                placeholder="Added date to"
+                                class="catalog__filters-date dark"
+                                v-model="filterOptions.dateTo"
+                                label="Added date from"
+                                @input="filterChange()"
+                        ></flat-pickr>
                     </v-col>
                 </v-row>
             </v-container>
         </div>
         <div class="catalog__list"  :class="{showFilter}">
-            <div class="title dark">Products Catalog</div>
+            <div class="catalog__list-top">
+                <div class="title dark">Products Catalog</div>
+
+                <v-select
+                        class="catalog__n-col"
+                        dark
+                        :items="product_numbs"
+                        label="amount"
+                        v-model="filterOptions.n"
+                        @change="filterChange"
+                ></v-select>
+            </div>
+
             <div v-if="catalogList">
                 <v-simple-table
                     dark
@@ -167,6 +195,29 @@
                         <td class="mob-off">{{item.on_hand}}</td>
                     </tr>
                 </v-simple-table>
+
+                <div class="pagination dark" v-if="catalogListLength">
+                    <vue-ads-pagination
+                            :total-items="catalogListLength"
+                            :items-per-page="filterOptions.n"
+                            :max-visible-pages="10"
+                            :page="page"
+                            @range-change="rangeChange"
+                    >
+                        <template
+                                slot="buttons"
+                                slot-scope="props"
+                        >
+                            <vue-ads-page-button
+                                    :class="{'bg-yellow-dark': button.active}"
+                                    v-for="(button, key) in props.buttons"
+                                    :key="key"
+                                    v-bind="button"
+                                    @page-change="page = button.page"
+                            />
+                        </template>
+                    </vue-ads-pagination>
+                </div>
             </div>
             <div v-show="catalogPreloader">
                 <loader></loader>
