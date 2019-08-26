@@ -1,10 +1,10 @@
 <template>
     <div class="product" v-if="productDetail">
-        <div class="title dark">{{productDetail.title}}</div>
-        <div class="product__list-info dark">
+        <div class="title ">{{productDetail.title}}</div>
+        <div class="product__list-info ">
             <v-row>
                 <v-col offset-lg="1" lg="2" md="6" sm="12" cols="12" >
-                    <v-card  dark>
+                    <v-card  >
                         <v-list-item>
                             <v-list-item-content>
                                 <v-list-item-title>Images</v-list-item-title>
@@ -15,7 +15,7 @@
                     </v-card>
                 </v-col>
                 <v-col lg="2" md="6" sm="6" cols="12" >
-                    <v-card  dark>
+                    <v-card  >
                         <v-list-item>
                             <v-list-item-content>
                                 <v-list-item-title>Category</v-list-item-title>
@@ -61,7 +61,7 @@
                     </v-card>
                 </v-col>
                 <v-col lg="2" md="6" sm="6" cols="12" >
-                    <v-card  dark>
+                    <v-card  >
                         <v-list-item >
                             <v-list-item-content>
                                 <v-list-item-title>Brand</v-list-item-title>
@@ -107,7 +107,7 @@
                     </v-card>
                 </v-col>
                 <v-col lg="2" md="6" sm="6" cols="12" >
-                    <v-card  dark>
+                    <v-card  >
                         <v-list-item>
                             <v-list-item-content>
                                 <v-list-item-title>vendor sku</v-list-item-title>
@@ -147,7 +147,7 @@
                     </v-card>
                 </v-col>
                 <v-col lg="2" md="6" sm="6" cols="12" >
-                    <v-card  dark>
+                    <v-card  >
                         <v-list-item>
                             <v-list-item-content>
                                 <v-list-item-title>Country Of Origin</v-list-item-title>

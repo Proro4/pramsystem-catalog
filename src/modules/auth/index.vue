@@ -7,7 +7,7 @@
 
             <v-col cols="10">
                 <v-text-field
-                        dark
+
                         type="text"
                         label="Name"
                         v-model="auth.name"
@@ -15,7 +15,7 @@
             </v-col>
             <v-col cols="10">
                 <v-text-field
-                        dark
+
                         type="password"
                         label="Password"
                         v-model="auth.password"

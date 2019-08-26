@@ -56,6 +56,11 @@
   &__list-top{
     display: flex;
     justify-content: space-between;
+    .title{
+      display: flex;
+      align-items: center;
+      padding:0 15px;
+    }
   }
   &__n-col{
     margin-right: 15px;

@@ -11,3 +11,4 @@ export const SWITCH_FILTER_SHOWS = 'SWITCH_FILTER_SHOWS';
 export const PRODUCT_DETAIL = 'PRODUCT_DETAIL';
 //system
 export const CATALOG_PAGE = 'CATALOG_PAGE';
+export const THEME_CHANGE = 'THEME_CHANGE';

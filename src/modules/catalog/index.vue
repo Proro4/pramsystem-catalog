@@ -51,11 +51,16 @@
                     <v-col class="catalog__filters-item" lg="2" md="3" sm="4" cols="6" >
                         <v-select
                                 dark
-                                :items="catalogVendors"
                                 label="Vendors"
+                                :items="catalogVendors"
                                 v-model="filterOptions.vendor"
+                                item-value='id'
+                                item-text='name'
                                 @change="filterChange()"
-                        ></v-select>
+                        >
+                            <template slot='selection' slot-scope='{ item }'>
+                                {{ item.name }}
+                            </template></v-select>
                     </v-col>
                     <v-col class="catalog__filters-item" lg="2" md="3" sm="4" cols="6" >
                         <v-text-field
@@ -102,7 +107,7 @@
 
                         <flat-pickr
                                 placeholder="Added date from"
-                                class="catalog__filters-date dark"
+                                class="catalog__filters-date "
                                 v-model="filterOptions.dateFrom"
                                 label="Added date from"
                                 @input="filterChange()"
@@ -117,7 +122,7 @@
 
                         <flat-pickr
                                 placeholder="Added date to"
-                                class="catalog__filters-date dark"
+                                class="catalog__filters-date "
                                 v-model="filterOptions.dateTo"
                                 label="Added date from"
                                 @input="filterChange()"
@@ -128,11 +133,11 @@
         </div>
         <div class="catalog__list"  :class="{showFilter}">
             <div class="catalog__list-top">
-                <div class="title dark">Products Catalog</div>
+                <div class="title ">Products Catalog</div>
 
                 <v-select
                         class="catalog__n-col"
-                        dark
+
                         :items="product_numbs"
                         label="amount"
                         v-model="filterOptions.n"
@@ -142,7 +147,7 @@
 
             <div v-if="catalogList">
                 <v-simple-table
-                    dark
+
                 >
                     <tr>
                         <th class="catalog__sort mob-off" @click="sort('prefix')">
@@ -171,7 +176,7 @@
                         <th>Model Number</th>
                         <th>Brand</th>
                         <th class="mob-off">Min Pack</th>
-                        <th class="catalog__sort mob-off" @click="sort('on_hard')">
+                        <th class="catalog__sort mob-off" @click="sort('on_hand')">
                             <label>
                                 <input type="radio" name="sort">
                                 <span>On Hand</span>
@@ -182,7 +187,7 @@
                         :key="index"
                         class="catalog__tr">
                         <td class="mob-off">{{item.prefix}}</td>
-                        <td class="mob-off"><img :src="item.image" alt=""></td>
+                        <td class="mob-off"><div v-if="item.image"><img :src="item.image" alt=""></div></td>
                         <td><router-link target="_blank" :to="{name:'productDetail', params: {id: item.id}}">{{item.vendor_sku}}</router-link></td>
                         <td>{{item.upc}}</td>
                         <td>{{item.cost}}</td>
@@ -196,7 +201,7 @@
                     </tr>
                 </v-simple-table>
 
-                <div class="pagination dark" v-if="catalogListLength">
+                <div class="pagination " v-if="catalogListLength">
                     <vue-ads-pagination
                             :total-items="catalogListLength"
                             :items-per-page="filterOptions.n"

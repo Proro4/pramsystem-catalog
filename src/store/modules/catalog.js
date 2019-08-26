@@ -54,10 +54,11 @@ const mutations = {
     [CATALOG_VENDORDS](state, status) {
         let key;
         state.catalogVendorsList = status;
-        state.catalogVendors.push('all');
+        state.catalogVendors.push({id:'all', name:'all'});
         for (key in state.catalogVendorsList) {
             let item = state.catalogVendorsList[key];
-            state.catalogVendors.push(item);
+            let element = {id:key, name:item};
+            state.catalogVendors.push(element);
         }
     },
     [CATALOG_PRELOAD](state, status) {

@@ -5,7 +5,7 @@
   background: #252525;
   display: flex;
   padding:0 25px;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   &__right{
     display: flex;
@@ -69,4 +69,15 @@
   }
   tspan { white-space:pre }
   .shp0 { fill: #ffffff }
+  .theme-change{
+    align-items: center;
+    display: flex;
+    &__select{
+      width: 150px;
+    }
+    span{
+      margin-right: 15px;
+      background: transparent;
+    }
+  }
 }

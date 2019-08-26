@@ -21,10 +21,10 @@ const mutations ={
         state.authUser = status;
         if(state.authUser.name == 'admin' && state.authUser.password == '1234'){
              state.isAuthentificated = true;
-             state.authErrorMessage = 'Веден правильный логин и пароль';
+             state.authErrorMessage = 'You are logged in';
              localStorage.setItem('auth', 'true');
         }else{
-             state.authErrorMessage = 'Веден неправильный логин или пароль.'
+             state.authErrorMessage = 'Wrong username or password entered.'
         }
     },
     [LOGOUT](state){

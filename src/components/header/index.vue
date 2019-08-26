@@ -1,5 +1,17 @@
 <template>
     <div class="header">
+        <div class="header__left">
+            <label class="theme-change">
+                <span class="">Theme</span>
+                <v-select
+                    class="theme-change__select"
+
+                    v-model="changeTheme"
+                    :items="theme"
+                    @change="themeChange()"
+                ></v-select>
+            </label>
+        </div>
         <div class="header__right" v-if="isAuthentificated">
             <div class="filter-btn" v-if="catalogPage" @click="filterOpen(!showFilter)"  :class="{showFilter}">
                 Filter

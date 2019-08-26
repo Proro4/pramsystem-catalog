@@ -23,7 +23,7 @@ export default {
                 modelNumber: '',
                 brand: '',
                 upc: '',
-                vendor: 'all',
+                vendor: '',
                 costFrom: '',
                 costTo: '',
                 onHandFrom: '',
